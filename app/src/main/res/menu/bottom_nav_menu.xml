@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/navHand"
-        android:title="asd"
+        android:title=""
         android:icon="@drawable/blackhand"
         />
 
