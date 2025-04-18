@@ -10,7 +10,7 @@
     <item
         android:id="@+id/navHand"
         android:title=""
-        android:icon="@drawable/hand"
+        android:icon="@drawable/blackhand"
         />
 
     <item
