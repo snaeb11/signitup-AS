@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if (itemId == R.id.navHand) {
                     //hand
-                    loadFragment(new HandFragment(), false);
+                    loadFragment(new ActivityFragment(), false);
 
                 } else if (itemId == R.id.navMenu) {
                     //menu

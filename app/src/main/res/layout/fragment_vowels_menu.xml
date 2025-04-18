@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/dark_grey"
+    tools:context=".vowelsMenuFragment">
+
+    <ImageButton
+        android:id="@+id/openA"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Open Hand Fragment"
+        android:scaleType="fitXY"
+        android:src="@drawable/aa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <ImageButton
+        android:id="@+id/openE"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Open Hand Fragment"
+        android:scaleType="fitXY"
+        android:src="@drawable/ee"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.126" />
+
+    <ImageButton
+        android:id="@+id/openI"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Open Hand Fragment"
+        android:scaleType="fitXY"
+        android:src="@drawable/ii"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <ImageButton
+        android:id="@+id/openO"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Open Hand Fragment"
+        android:scaleType="fitXY"
+        android:src="@drawable/oo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <ImageButton
+        android:id="@+id/openU"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Open Hand Fragment"
+        android:scaleType="fitXY"
+        android:src="@drawable/uu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.875" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
