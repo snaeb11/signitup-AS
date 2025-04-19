@@ -43,6 +43,9 @@ public class LetterAFragment extends Fragment implements CameraBridgeViewBase.Cv
         mOpenCvCameraView = view.findViewById(R.id.camera_view);
         mOpenCvCameraView.setCvCameraViewListener(this);
 
+        mOpenCvCameraView.setScaleX(1.5f);
+        mOpenCvCameraView.setScaleY(1.5f);
+
         // Check for camera permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (requireActivity().checkSelfPermission(CAMERA) != PackageManager.PERMISSION_GRANTED) {
