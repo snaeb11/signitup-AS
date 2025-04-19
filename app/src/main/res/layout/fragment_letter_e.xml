@@ -1,18 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:opencv="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LetterAFragment">
+    tools:context=".LetterEFragment">
 
-    <org.opencv.android.JavaCameraView
-    android:layout_gravity="top|center"
-    android:id="@+id/camera_view"
-    android:layout_width="340dp"
-    android:layout_height="446dp"
-    opencv:camera_id="1"
-    opencv:show_fps="true" />
+    <!-- FrameLayout as a container for the JavaCameraView -->
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="446dp"
+        android:layout_marginBottom="285dp"
+        opencv:layout_constraintBottom_toBottomOf="parent"
+        opencv:layout_constraintEnd_toEndOf="parent"
+        opencv:layout_constraintStart_toStartOf="parent"
+        opencv:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <!-- JavaCameraView inside the FrameLayout -->
+        <org.opencv.android.JavaCameraView
+            android:id="@+id/camera_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            opencv:camera_id="1"
+            opencv:show_fps="false"
+            android:clickable="true"
+            android:focusable="true"
+            android:enabled="false"/>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
