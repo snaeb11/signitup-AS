@@ -19,11 +19,11 @@ public class vowelsMenuFragment extends Fragment {
         ImageButton openA = view.findViewById(R.id.openA);
         openA.setOnClickListener(v -> {
             Toast.makeText(getContext(), "You clicked A", Toast.LENGTH_SHORT).show();
-            LetterAFragment letterAFragment = new LetterAFragment();
+            HandFragment handFragment = new HandFragment();
 
             requireActivity().getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragment_container, letterAFragment) // use your activity's container ID
+                    .replace(R.id.fragment_container, handFragment) // use your activity's container ID
                     .addToBackStack(null) // optional
                     .commit();
         });

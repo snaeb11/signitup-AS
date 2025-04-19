@@ -1,5 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
 }
 
 android {
@@ -26,6 +27,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
 
 }
 
@@ -36,7 +40,14 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     implementation project(':OpenCV')
+    implementation libs.core.ktx
+    implementation libs.play.services.vision
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
+    implementation libs.kotlin.stdlib
+    implementation libs.solution.core
+    implementation libs.hands
+    implementation libs.tensorflow.lite.v290
+    implementation libs.tensorflow.lite.support
 }

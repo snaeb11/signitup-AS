@@ -3,142 +3,133 @@ package org.opencv.core
 import org.opencv.core.Mat.*
 import java.lang.RuntimeException
 
-fun Mat.get(row: Int, col: Int, data: UByteArray)  = this.get(row, col, data.asByteArray())
-fun Mat.get(indices: IntArray, data: UByteArray)  = this.get(indices, data.asByteArray())
-fun Mat.put(row: Int, col: Int, data: UByteArray)  = this.put(row, col, data.asByteArray())
-fun Mat.put(indices: IntArray, data: UByteArray)  = this.put(indices, data.asByteArray())
+fun Mat.get(row: Int, col: Int, data: ByteArray)  = this.get(row, col, data)
+fun Mat.get(indices: IntArray, data: ByteArray)  = this.get(indices, data)
+fun Mat.put(row: Int, col: Int, data: ByteArray)  = this.put(row, col, data)
+fun Mat.put(indices: IntArray, data: ByteArray)  = this.put(indices, data)
 
-fun Mat.get(row: Int, col: Int, data: UShortArray)  = this.get(row, col, data.asShortArray())
-fun Mat.get(indices: IntArray, data: UShortArray)  = this.get(indices, data.asShortArray())
-fun Mat.put(row: Int, col: Int, data: UShortArray)  = this.put(row, col, data.asShortArray())
-fun Mat.put(indices: IntArray, data: UShortArray)  = this.put(indices, data.asShortArray())
+fun Mat.get(row: Int, col: Int, data: ShortArray)  = this.get(row, col, data)
+fun Mat.get(indices: IntArray, data: ShortArray)  = this.get(indices, data)
+fun Mat.put(row: Int, col: Int, data: ShortArray)  = this.put(row, col, data)
+fun Mat.put(indices: IntArray, data: ShortArray)  = this.put(indices, data)
 
 /***
  *  Example use:
  *
- *  val (b, g, r) = mat.at<UByte>(50, 50).v3c
- *  mat.at<UByte>(50, 50).val = T3(245u, 113u, 34u)
+ *  val (b, g, r) = mat.at<Byte>(50, 50).v3c
+ *  mat.at<Byte>(50, 50).val = T3(245, 113, 34)
  *
  */
 @Suppress("UNCHECKED_CAST")
 inline fun <reified T> Mat.at(row: Int, col: Int) : Atable<T> =
     when (T::class) {
-        Byte::class, Double::class, Float::class, Int::class, Short::class -> this.at(
-            T::class.java,
-            row,
-            col
-        )
-        UByte::class -> AtableUByte(this, row, col) as Atable<T>
-        UShort::class -> AtableUShort(this, row, col) as Atable<T>
+        Byte::class -> AtableByte(this, row, col) as Atable<T>
+        Double::class, Float::class, Int::class, Short::class -> this.at(T::class.java, row, col)
         else -> throw RuntimeException("Unsupported class type")
     }
 
 @Suppress("UNCHECKED_CAST")
 inline fun <reified T> Mat.at(idx: IntArray) : Atable<T> =
     when (T::class) {
-        Byte::class, Double::class, Float::class, Int::class, Short::class -> this.at(
-            T::class.java,
-            idx
-        )
-        UByte::class -> AtableUByte(this, idx) as Atable<T>
-        UShort::class -> AtableUShort(this, idx) as Atable<T>
+        Byte::class -> AtableByte(this, idx) as Atable<T>
+        Double::class, Float::class, Int::class, Short::class -> this.at(T::class.java, idx)
         else -> throw RuntimeException("Unsupported class type")
     }
 
-class AtableUByte(val mat: Mat, val indices: IntArray): Atable<UByte> {
+class AtableByte(val mat: Mat, val indices: IntArray): Atable<Byte> {
 
     constructor(mat: Mat, row: Int, col: Int) : this(mat, intArrayOf(row, col))
 
-    override fun getV(): UByte {
-        val data = UByteArray(1)
+    override fun getV(): Byte {
+        val data = ByteArray(1)
         mat.get(indices, data)
         return data[0]
     }
 
-    override fun setV(v: UByte) {
-        val data = ubyteArrayOf(v)
+    override fun setV(v: Byte) {
+        val data = byteArrayOf(v)
         mat.put(indices, data)
     }
 
-    override fun getV2c(): Tuple2<UByte> {
-        val data = UByteArray(2)
+    override fun getV2c(): Tuple2<Byte> {
+        val data = ByteArray(2)
         mat.get(indices, data)
         return Tuple2(data[0], data[1])
     }
 
-    override fun setV2c(v: Tuple2<UByte>) {
-        val data = ubyteArrayOf(v._0, v._1)
+    override fun setV2c(v: Tuple2<Byte>) {
+        val data = byteArrayOf(v._0, v._1)
         mat.put(indices, data)
     }
 
-    override fun getV3c(): Tuple3<UByte> {
-        val data = UByteArray(3)
+    override fun getV3c(): Tuple3<Byte> {
+        val data = ByteArray(3)
         mat.get(indices, data)
         return Tuple3(data[0], data[1], data[2])
     }
 
-    override fun setV3c(v: Tuple3<UByte>) {
-        val data = ubyteArrayOf(v._0, v._1, v._2)
+    override fun setV3c(v: Tuple3<Byte>) {
+        val data = byteArrayOf(v._0, v._1, v._2)
         mat.put(indices, data)
     }
 
-    override fun getV4c(): Tuple4<UByte> {
-        val data = UByteArray(4)
+    override fun getV4c(): Tuple4<Byte> {
+        val data = ByteArray(4)
         mat.get(indices, data)
         return Tuple4(data[0], data[1], data[2], data[3])
     }
 
-    override fun setV4c(v: Tuple4<UByte>) {
-        val data = ubyteArrayOf(v._0, v._1, v._2, v._3)
+    override fun setV4c(v: Tuple4<Byte>) {
+        val data = byteArrayOf(v._0, v._1, v._2, v._3)
         mat.put(indices, data)
     }
 }
 
-class AtableUShort(val mat: Mat, val indices: IntArray): Atable<UShort> {
+class AtableShort(val mat: Mat, val indices: IntArray): Atable<Short> {
 
     constructor(mat: Mat, row: Int, col: Int) : this(mat, intArrayOf(row, col))
 
-    override fun getV(): UShort {
-        val data = UShortArray(1)
+    override fun getV(): Short {
+        val data = ShortArray(1)
         mat.get(indices, data)
         return data[0]
     }
 
-    override fun setV(v: UShort) {
-        val data = ushortArrayOf(v)
+    override fun setV(v: Short) {
+        val data = shortArrayOf(v)
         mat.put(indices, data)
     }
 
-    override fun getV2c(): Tuple2<UShort> {
-        val data = UShortArray(2)
+    override fun getV2c(): Tuple2<Short> {
+        val data = ShortArray(2)
         mat.get(indices, data)
         return Tuple2(data[0], data[1])
     }
 
-    override fun setV2c(v: Tuple2<UShort>) {
-        val data = ushortArrayOf(v._0, v._1)
+    override fun setV2c(v: Tuple2<Short>) {
+        val data = shortArrayOf(v._0, v._1)
         mat.put(indices, data)
     }
 
-    override fun getV3c(): Tuple3<UShort> {
-        val data = UShortArray(3)
+    override fun getV3c(): Tuple3<Short> {
+        val data = ShortArray(3)
         mat.get(indices, data)
         return Tuple3(data[0], data[1], data[2])
     }
 
-    override fun setV3c(v: Tuple3<UShort>) {
-        val data = ushortArrayOf(v._0, v._1, v._2)
+    override fun setV3c(v: Tuple3<Short>) {
+        val data = shortArrayOf(v._0, v._1, v._2)
         mat.put(indices, data)
     }
 
-    override fun getV4c(): Tuple4<UShort> {
-        val data = UShortArray(4)
+    override fun getV4c(): Tuple4<Short> {
+        val data = ShortArray(4)
         mat.get(indices, data)
         return Tuple4(data[0], data[1], data[2], data[3])
     }
 
-    override fun setV4c(v: Tuple4<UShort>) {
-        val data = ushortArrayOf(v._0, v._1, v._2, v._3)
+    override fun setV4c(v: Tuple4<Short>) {
+        val data = shortArrayOf(v._0, v._1, v._2, v._3)
         mat.put(indices, data)
     }
 }
